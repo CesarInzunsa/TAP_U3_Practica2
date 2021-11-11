@@ -11,8 +11,7 @@ import java.util.logging.Logger;
  */
 public class Semaforo extends Thread {
     
-    private final int x;
-    private final int y;
+    private final int x, y;
     private int estadoSemaforo;
     private final Lienzo lienzo;
 

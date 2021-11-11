@@ -10,12 +10,9 @@ import java.util.logging.Logger;
  */
 public class Carrito extends Thread {
 
-    private int x;
-    private int y;
-    private int orientacion;
+    private int x,y, orientacion, desplazamientoX = 10;
     private Semaforo semaforo;
     private Lienzo lienzo;
-    private int desplazamientoX = 10;
 
     /*
         1 --> horizontal
