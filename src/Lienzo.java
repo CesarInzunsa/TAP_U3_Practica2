@@ -10,11 +10,13 @@ import java.awt.image.BufferStrategy;
  */
 public class Lienzo extends Canvas{
     
-    Semaforo semaforo1 = new Semaforo(180, 20,  this, 1);
-    Semaforo semaforo2 = new Semaforo(560, 460, this, 2);
+    Semaforo semaforo1 = new Semaforo(150, 10,  this, 3);
+    Semaforo semaforo2 = new Semaforo(500, 410, this, 1);
     
-    Carrito carro1 = new Carrito(800, 230, 1, this, semaforo1);
-    Carrito carro2 = new Carrito(450, 650, 2, this, semaforo2);
+    Carrito carro1 = new Carrito(480, 180, 1, this, semaforo1);
+    Carrito carro2 = new Carrito(400, 400, 2, this, semaforo2);
+    Carrito carro3 = new Carrito(130, 310, 3, this, semaforo1);
+    Carrito carro4 = new Carrito(265, 50, 4, this, semaforo2);
     
     public Lienzo(){
         semaforo1.start();
@@ -22,22 +24,12 @@ public class Lienzo extends Canvas{
         
         carro1.start();
         carro2.start();
+        carro3.start();
+        carro4.start();
     }
-
-    @Override
-    public BufferStrategy getBufferStrategy() {
-        return super.getBufferStrategy(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void createBufferStrategy(int numBuffers) {
-        super.createBufferStrategy(numBuffers); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        createBufferStrategy(2);
         this.setBackground(Color.WHITE);
         
         dibujarCalles(g);
@@ -47,30 +39,37 @@ public class Lienzo extends Canvas{
         
         carro1.dibujarCarrito(g);
         carro2.dibujarCarrito(g);
+        carro3.dibujarCarrito(g);
+        carro4.dibujarCarrito(g);
         
     }
     
     public void dibujarCalles(Graphics g){
         g.setColor(Color.GRAY);
-        g.fillRect(0, 200, 800, 250);
-        g.fillRect(280, 0, 250, 800);
+        g.fillRect(0, 150, 700, 250);
+        g.fillRect(230, 0, 250, 550);
         
         g.setColor(Color.WHITE);
-        g.fillRect(400, 0, 10, 30);
-        g.fillRect(400, 70, 10, 30);
-        g.fillRect(400, 140, 10, 30);
-        g.fillRect(400, 470, 10, 30);
-        g.fillRect(400, 540, 10, 30);
-        g.fillRect(400, 610, 10, 30);
+        g.fillRect(350, 0, 10, 30);
+        g.fillRect(350, 60, 10, 30);
+        g.fillRect(350, 120, 10, 30);
         
-        g.fillRect(0, 310, 30, 10);
-        g.fillRect(70, 310, 30, 10);
-        g.fillRect(140, 310, 30, 10);
-        g.fillRect(210, 310, 30, 10);
-        g.fillRect(550, 310, 30, 10);
-        g.fillRect(630, 310, 30, 10);
-        g.fillRect(700, 310, 30, 10);
-        g.fillRect(770, 310, 30, 10);
+        g.fillRect(350, 400, 10, 30);
+        g.fillRect(350, 460, 10, 30);
+        g.fillRect(350, 520, 10, 30);
+        
+        g.fillRect(0,   265, 30, 10);
+        g.fillRect(65,  265, 30, 10);
+        g.fillRect(130, 265, 30, 10);
+        g.fillRect(200, 265, 30, 10);
+        
+        g.fillRect(480, 265, 30, 10);
+        g.fillRect(550, 265, 30, 10);
+        g.fillRect(620, 265, 30, 10);
+        g.fillRect(690, 265, 30, 10);
+        
+        //g.setColor(Color.BLUE);
+        //g.fillRect(180, 50, 50, 50);
     }
     
 }

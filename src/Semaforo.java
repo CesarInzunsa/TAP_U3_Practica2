@@ -30,19 +30,24 @@ public class Semaforo extends Thread {
         while (true) {
             try {
                 switch (estadoSemaforo) {
-                    case 1:
+                    case 1://rojo
                         lienzo.repaint();
                         sleep(7000);
                         estadoSemaforo = 2;
                         break;
-                    case 2:
+                    case 2://amarillo que va a verde
                         lienzo.repaint();
-                        sleep(4000);
+                        sleep(2000);
                         estadoSemaforo = 3;
                         break;
-                    case 3:
+                    case 3://verde
                         lienzo.repaint();
                         sleep(7000);
+                        estadoSemaforo = 4;
+                        break;
+                    case 4://amarillo que va a rojo
+                        lienzo.repaint();
+                        sleep(2000);
                         estadoSemaforo = 1;
                         break;
                 }
@@ -55,7 +60,7 @@ public class Semaforo extends Thread {
 
     public void dibujarSemaforo(Graphics g) {
         g.setColor(Color.DARK_GRAY);
-        g.fillRect(x, y, 70, 170);
+        g.fillRect(x, y, 50, 130);
         
         dibujarOscuro(g);
         dibujarBrillante(g);
@@ -63,13 +68,13 @@ public class Semaforo extends Thread {
     
     private void dibujarOscuro(Graphics g){
         g.setColor(new Color(160,0,0));
-        g.fillOval(x + 15, y + 15, 40, 40);
+        g.fillOval(x + 10, y + 10, 30, 30);
 
         g.setColor(new Color(160,155,0));
-        g.fillOval(x + 15, y + 65, 40, 40);
+        g.fillOval(x + 10, y + 50, 30, 30);
 
         g.setColor(new Color(0,160,0));
-        g.fillOval(x + 15, y + 115, 40, 40);
+        g.fillOval(x + 10, y + 90, 30, 30);
     }
 
     private void dibujarBrillante(Graphics g){
@@ -77,19 +82,28 @@ public class Semaforo extends Thread {
             case 1:
                 //rojo brillante
                 g.setColor(Color.RED);
-                g.fillOval(x + 15, y + 15, 40, 40);
+                g.fillOval(x + 10, y + 10, 30, 30);
                 break;
             case 2:
                 //amarillo brillante
                 g.setColor(Color.YELLOW);
-                g.fillOval(x + 15, y + 65, 40, 40);
+                g.fillOval(x + 10, y + 50, 30, 30);
                 break;
             case 3:
                 //verde brillante
                 g.setColor(Color.GREEN);
-                g.fillOval(x + 15, y + 115, 40, 40);
+                g.fillOval(x + 10, y + 90, 30, 30);
+                break;
+            case 4:
+                //amarillo brillante
+                g.setColor(Color.YELLOW);
+                g.fillOval(x + 10, y + 50, 30, 30);
                 break;
         }
+    }
+
+    public int getEstadoSemaforo() {
+        return estadoSemaforo;
     }
     
 }
